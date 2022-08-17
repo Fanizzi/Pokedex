@@ -2,7 +2,7 @@ CREATE DATABASE db_pokedex;
 
 USE db_pokedex;
 
-CREATE TABLE Pokemon_Types (
+CREATE TABLE PokemonTypes (
     id int auto_increment,
     nome varchar(50) NOT NULL,
     PRIMARY KEY(id)
