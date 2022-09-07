@@ -4,8 +4,6 @@ class PokemonTypeController
 {
     public static function index()
     {
-        include 'Model/PokemonTypeModel.php';
-
         $model = new PokemonTypeModel();
         $model->getAllRows();
 
@@ -15,8 +13,6 @@ class PokemonTypeController
 
     public static function form()
     {
-        include 'Model/PokemonTypeModel.php';
-
         $model = new PokemonTypeModel();
 
         if(isset($_GET['id']))
@@ -27,8 +23,6 @@ class PokemonTypeController
 
     public static function save()
     {
-        include 'Model/PokemonTypeModel.php';
-
         $pokemontype = new PokemonTypeModel();
         
         $pokemontype->id = $_POST['id'];
@@ -40,8 +34,6 @@ class PokemonTypeController
 
     public static function delete()
     {
-        include 'Model/PokemonTypeModel.php';
-
         $model = new PokemonTypeModel();
         $model->delete((int) $_GET['id']);
 

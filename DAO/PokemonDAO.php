@@ -12,31 +12,23 @@ class PokemonDAO
 
     public function insert(PokemonModel $model)
     {
-        $sql = "INSERT INTO Pokemon (nome, id_Pokemon_Types, id_Regions)
-                VALUES (?, ?, ?)";
+        $sql = "INSERT INTO Pokemon (nome, numero, imagem, id_Pokemon_Types, id_Region)
+                VALUES (?, ?, ?, ?, ?)";
         
         $stmt = $this->conexao->prepare($sql);
 
         $stmt->bindValue(1, $model->nome);
-        $stmt->bindValue(2, $model->id_Pokemon_Types);
-        $stmt->bindValue(3, $model->id_Regions);
+        $stmt->bindValue(2, $model->numero);
+        $stmt->bindValue(3, $model->imagem);
+        $stmt->bindValue(4, $model->id_Pokemon_Types);
+        $stmt->bindValue(5, $model->id_Region);
 
         $stmt->execute();
     }
 
-    public function selectPokemonTypes()
+    public function select()
     {
-        $sql = "SELECT * FROM PokemonTypes";
-
-        $stmt = $this->conexao->prepare($sql);
-        $stmt->execute();
-
-        return $stmt->fetchAll(PDO::FETCH_CLASS);
-    }
-
-    public function selectRegions()
-    {
-        $sql = "SELECT * FROM Regions";
+        $sql = "SELECT * FROM Pokemon";
 
         $stmt = $this->conexao->prepare($sql);
         $stmt->execute();
@@ -66,13 +58,15 @@ class PokemonDAO
 
     public function update(PokemonModel $model)
     {
-        $sql = 'UPDATE Pokemon SET nome=?, id_Pokemon_Types=?, id_Region=? WHERE id = ?';
+        $sql = 'UPDATE Pokemon SET nome=?, numero=?, imagem=?, id_Pokemon_Types=?, id_Region=? WHERE id = ?';
 
         $stmt = $this->conexao->prepare($sql);
         $stmt->bindValue(1, $model->nome);
-        $stmt->bindValue(2, $model->id_Pokemon_Types);
-        $stmt->bindValue(3, $model->id_Region);
-        $stmt->bindValue(4, $model->id);
+        $stmt->bindValue(2, $model->numero);
+        $stmt->bindValue(3, $model->imagem);
+        $stmt->bindValue(4, $model->id_Pokemon_Types);
+        $stmt->bindValue(5, $model->id_Region);
+        $stmt->bindValue(6, $model->id);
         $stmt->execute();
     }
 }

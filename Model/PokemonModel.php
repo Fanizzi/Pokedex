@@ -2,14 +2,14 @@
 
 class PokemonModel
 {
-    public $id, $nome;
+    public $id, $nome, $numero, $imagem;
+
+    public $region, $pokemontypes;
 
     public $rows;
 
     public function save()
     {
-        include 'DAO/PokemonDAO.php';
-
         $dao = new PokemonDAO();
 
         if(empty($this->id))
@@ -24,24 +24,24 @@ class PokemonModel
 
     public function getAllRows()
     {
-        include 'DAO/PokemonDAO.php';
+        $dao = new PokemonDAO;
+        $this->rows = $dao->select();
+    }
 
-        $dao = new PokemonDAO();
-        $this->rows = $dao->selectPokemonTypes();
+    public function getAllPokemonTypes()
+    {
+        $dao = new PokemonTypeDAO();
+        return $dao->select();
     }
 
     public function getAllRegions()
     {
-        include 'DAO/PokemonDAO.php';
-
-        $dao = new PokemonDAO();
-        $this->rows = $dao->selectRegions();
+        $dao = new RegionDAO();
+        return $dao->select();
     }
 
     public function getById(int $id)
     {
-        include 'DAO/PokemonDAO.php';
-
         $dao = new PokemonDAO();
 
         $obj = $dao->selectById($id);
@@ -51,8 +51,6 @@ class PokemonModel
 
     public function delete(int $id)
     {
-        include 'DAO/PokemonDAO.php';
-
         $dao = new PokemonDAO;
         $dao->delete( (int) $id);
 

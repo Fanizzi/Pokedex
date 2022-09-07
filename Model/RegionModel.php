@@ -8,8 +8,6 @@ class RegionModel
 
     public function save()
     {
-        include 'DAO/RegionDAO.php';
-
         $dao = new RegionDAO();
 
         if(empty($this->id))
@@ -24,16 +22,12 @@ class RegionModel
 
     public function getAllRows()
     {
-        include 'DAO/RegionDAO.php';
-
         $dao = new RegionDAO();
         $this->rows = $dao->select();
     }
 
-    public function getById()
+    public function getById(int $id)
     {
-        include 'DAO/RegionDAO.php';
-
         $dao = new RegionDAO;
         
         $obj = $dao->selectById($id);
@@ -43,8 +37,6 @@ class RegionModel
 
     public function delete(int $id)
     {
-        include 'DAO/RegionDAO.php';
-
         $dao = new RegionDAO;
         $dao->delete((int) $id);
 
