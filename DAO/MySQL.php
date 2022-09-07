@@ -2,7 +2,7 @@
 
 class MySQL extends PDO
 {
-    private $dsn = 'mysql:host=localhost:3306;dbname=db_pokedex';
+    private $dsn = 'mysql:host=localhost:3307;dbname=db_pokedex';
     private $user = 'root';
     private $pass = 'etecjau';
 
