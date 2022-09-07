@@ -50,34 +50,37 @@
     </header>
     
     <main>
-        <table>    
-            <tr>
-                <th></th>
-                <th>ID</th>
-                <th>Nome</th>
-                <th>Número</th>
-                <th>Tipo</th>
-                <th>Região</th>
-            </tr>
+        <center>
+            <table id="table" class="table table-striped">    
+                <tr class="tr-list">
+                    <th></th>
+                    <th>ID</th>
+                    <th>Nome</th>
+                    <th>Número</th>
+                    <th>Imagem</th>
+                    <th>Tipo</th>
+                    <th>Região</th>
+                </tr>
+
+            <?php foreach($model->rows as $item): ?>
+                <tr>
+                    <td> <a href="/pokemon/delete?id=<?= $item->id ?>">X</a></td>
+                    <td> <?= $item->id ?> </td>
+                    <td> <a href="/pokemon/form?id=<?= $item->id ?>"> <?= $item->nome ?> </a></td>
+                    <td> <?= $item->numero ?> </td>
+                    <td> <?= $item->imagem ?> </td>
+                    <td> <?= $item->id_Pokemon_Types ?> </td>
+                    <td> <?= $item->id_Region ?> </td>
+                </tr>
+            <?php endforeach ?>
             
-        <?php foreach($model->rows as $item): ?>
-            <tr>
-                <td> <a href="/pokemon/delete?id=<?= $item->id ?>">X</a></td>
-                <td> <?= $item->id ?> </td>
-                <td> <a href="/pokemon/form?id=<?= $item->id ?>"> <?= $item->nome ?> </a></td>
-                <td> <?= $item->numero ?> </td>
-                <td> <?= $item->imagem ?> </td>
-                <td> <?= $item->id_Pokemon_Types ?> </td>
-                <td> <?= $item->id_Region ?> </td>
-            </tr>
-        <?php endforeach ?>
-        
-        <?php if(count($model->rows) == 0): ?>
-            <tr>
-                <td colspan="2">Nenhum registro encontrado...</td>
-            </tr>
-        <?php endif ?>
-        </table>
+            <?php if(count($model->rows) == 0): ?>
+                <tr>
+                    <td colspan="2">Nenhum registro encontrado...</td>
+                </tr>
+            <?php endif ?>
+            </table>
+        </center>
     </main>
     
 </body>

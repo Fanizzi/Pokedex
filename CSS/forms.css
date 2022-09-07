@@ -52,6 +52,19 @@ form {
     padding: 50px;
 }
 
+.tr-list {
+    text-align: center;
+}
+
+table {
+    text-align: center;
+    box-sizing: content-box;
+}
+
+table a {
+    color: red;
+}
+
 .input-list {
     padding: 20px;
 }

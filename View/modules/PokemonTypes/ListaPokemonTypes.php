@@ -50,7 +50,7 @@
     </header>
 
     <main>
-        <table>
+        <table class="table table-striped">
             <tr>
                 <th></th>
                 <th>ID</th>
